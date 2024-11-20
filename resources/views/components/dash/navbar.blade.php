@@ -633,3 +633,12 @@
         </ul>
     </div>
 </nav>
+
+<div class="content">
+    <nav class="mb-3" aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+            @if (Breadcrumbs::exists($slot))
+                {!! Breadcrumbs::render($slot) !!}
+            @endif
+        </ol>
+    </nav>

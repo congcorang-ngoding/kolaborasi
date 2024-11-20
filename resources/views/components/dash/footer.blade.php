@@ -1,3 +1,4 @@
+</div>
 </main>
 <!-- ===============================================-->
 <!--    End of Main Content-->
@@ -230,6 +231,8 @@
 <script src="{{ asset('backend') }}/vendors/feather-icons/feather.min.js"></script>
 <script src="{{ asset('backend') }}/vendors/dayjs/dayjs.min.js"></script>
 <script src="{{ asset('backend') }}/assets/js/phoenix.js"></script>
+
+@stack('footer')
 
 </body>
 
