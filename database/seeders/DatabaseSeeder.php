@@ -37,14 +37,13 @@ class DatabaseSeeder extends Seeder
         }
 
         $user = User::create([
-            'uuid' => Str::uuid()->toString(),
             'name' => 'Lord Daud',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12344321'),
             'email_verified_at' => now(),
         ]);
 
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'Super Admin']);
 
         $permissions = Permission::pluck('id', 'id')->all();
 

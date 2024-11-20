@@ -28,6 +28,8 @@
     <script src="{{ asset('backend') }}/vendors/simplebar/simplebar.min.js"></script>
     <script src="{{ asset('backend') }}/assets/js/config.js"></script>
 
+    @stack('header')
+
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
