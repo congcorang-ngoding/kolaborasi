@@ -21,6 +21,10 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'picture',
+        'whatsapp',
+        'gender',
+        'date_of_birth',
         'password',
         'email_verified_at'
     ];
@@ -45,6 +49,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'date_of_birth' => 'date'
         ];
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
     }
 }

@@ -123,4 +123,8 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'alias' => [
+        'Location' => Stevebauman\Location\Facades\Location::class,
+    ],
+
 ];

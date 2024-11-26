@@ -6,7 +6,11 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 // Dashboard
 Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
-    $trail->push('Dashboard', route('dashboard.index'));
+    $trail->push('Dashboard', route('dashboard'));
+});
+
+Breadcrumbs::for('dashboard2', function (BreadcrumbTrail $trail) {
+    $trail->push('Dashboard 2', route('dashboard2'));
 });
 
 // Dashboard > Profile

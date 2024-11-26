@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('email')->unique();
+            $table->string('picture')->nullable();
+            $table->enum('gender', ['Male', 'Female'])->default('Male');
+            $table->date('date_of_birth')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
