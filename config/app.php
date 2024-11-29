@@ -125,6 +125,7 @@ return [
 
     'alias' => [
         'Location' => Stevebauman\Location\Facades\Location::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

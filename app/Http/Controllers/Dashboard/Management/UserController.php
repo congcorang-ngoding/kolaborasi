@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Dashboard\Management;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Support\Arr;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
@@ -146,5 +149,16 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
+    }
+
+    public function exportPdf()
+    {
+        $pdf = Pdf::loadView('dashboard.pdf.testing');
+        return $pdf->download('testing.pdf');
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

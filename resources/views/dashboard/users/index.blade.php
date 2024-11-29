@@ -5,14 +5,42 @@
 
     <div class="mb-9">
         <div id="projectSummary" data-list='{"valueNames":["id","email", "name", "whatsapp"],"page":6,"pagination":true}'>
-            <div class="row mb-4 gx-6 gy-3 align-items-center">
+            <div class="row justify-content-between mb-4 gx-6 gy-3 align-items-center">
                 <div class="col-auto">
-                    <h2 class="mb-0">Users<span class="fw-normal text-body-tertiary ms-3"></span></h2>
+                    <h2 class="mb-0">{{ $title }}<span class="fw-normal text-body-tertiary ms-3"></span></h2>
                 </div>
                 @can('user-create')
                     <div class="col-auto"><a class="btn btn-primary px-5" href="{{ route('users.create') }}"><i
                                 class="fa-solid fa-plus me-2"></i>Add new user</a></div>
                 @endcan
+
+
+                <div class="col-auto">
+                    <div class="btn-group">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="exportDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-file-export me-2"></i>Export
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                                <li>
+                                    <form action="{{ route('users.exportPdf') }}" method="get" id="exportPdfForm">
+                                        <button class="dropdown-item" type="submit">
+                                            Export PDF
+                                        </button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="{{ route('users.exportExcel') }}" method="get" id="exportExcelForm">
+                                        <button class="dropdown-item" type="submit">
+                                            Export Excel
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <div class="row g-3 justify-content-end align-items-end mb-4">
@@ -86,7 +114,8 @@
                                                     class="fas fa-ellipsis-h fs-10"></span></button>
                                             <div class="dropdown-menu dropdown-menu-end py-2">
                                                 @can('user-edit')
-                                                    <a class="dropdown-item" href="{{ route('users.edit', $row->id) }}">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('users.edit', $row->id) }}">Edit</a>
                                                 @endcan
                                                 @can('user-delete')
                                                     <div class="dropdown-divider"></div>

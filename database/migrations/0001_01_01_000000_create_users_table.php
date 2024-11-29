@@ -19,6 +19,8 @@ return new class extends Migration
             $table->enum('gender', ['Male', 'Female'])->default('Male');
             $table->date('date_of_birth')->nullable();
             $table->string('whatsapp')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('google_token')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

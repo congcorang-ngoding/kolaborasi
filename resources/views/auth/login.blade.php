@@ -24,6 +24,8 @@
                             <h3 class="text-body-highlight">Sign In</h3>
                             <p class="text-body-tertiary">Get access to your account</p>
                         </div>
+                        <a href="{{ route('auth.google') }}" class="btn btn-phoenix-secondary w-100 mb-3"><span
+                                class="fab fa-google text-danger me-2 fs-9"></span>Sign in with google</a>
 
                         @if ($errors->any())
                             @foreach ($errors->all() as $row)
@@ -37,6 +39,12 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endforeach
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
                         @endif
 
 

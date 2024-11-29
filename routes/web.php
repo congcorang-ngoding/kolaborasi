@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Dashboard\Management\RoleController;
 use App\Http\Controllers\Dashboard\Management\UserController;
 
@@ -29,8 +30,15 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('users/exportPdf', [UserController::class, 'exportPdf'])->name('users.exportPdf');
+    Route::get('users/exportExcel', [UserController::class, 'exportExcel'])->name('users.exportExcel');
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
+});
+
+Route::controller(GoogleController::class)->group(function () {
+    Route::get('auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('auth/google/callback', 'handleGoogleCallback');
 });
 
 require __DIR__ . '/auth.php';
