@@ -2119,13 +2119,7 @@
     );
 
     const days = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday'
+        '1'
     ];
 
     if ($chartEl) {
@@ -2134,10 +2128,6 @@
       const getDefaultOptions = () => ({
         color: [
           getColor('info'),
-          getColor('danger'),
-          getColor('warning'),
-          getColor('success'),
-          getColor('primary')
         ],
         tooltip: {
           trigger: 'axis',
@@ -2163,11 +2153,9 @@
         },
         legend: {
           data: [
-            'Direct',
-            'Mail Ad',
-            'Affiliate Ad',
-            'Video Ad',
-            'Search Engine'
+            'Admin',
+            'Operator',
+            'User',
           ],
           textStyle: {
             color: getColor('tertiary-color')
@@ -2222,7 +2210,7 @@
             emphasis: {
               focus: 'series'
             },
-            data: [400, 241, 451, 150, 321, 330, 142]
+            data: [400]
           },
           {
             name: 'Mail Ad',
@@ -2234,7 +2222,7 @@
             emphasis: {
               focus: 'series'
             },
-            data: [250, 200, 222, 240, 230, 230, 211]
+            data: [250]
           },
           {
             name: 'Affiliate Ad',
@@ -2249,7 +2237,7 @@
             emphasis: {
               focus: 'series'
             },
-            data: [190, 182, 170, 195, 260, 333, 124]
+            data: [190]
           },
           {
             name: 'Video Ad',
@@ -2264,7 +2252,7 @@
             emphasis: {
               focus: 'series'
             },
-            data: [150, 212, 201, 154, 190, 330, 410]
+            data: [150]
           },
           {
             name: 'Search Engine',
@@ -2276,7 +2264,7 @@
             emphasis: {
               focus: 'series'
             },
-            data: [1000, 900, 700, 1100, 1200, 1300, 1350]
+            data: [1000]
           }
         ],
         grid: {
@@ -2295,7 +2283,7 @@
     const { getColor, getData } = window.phoenix.utils;
     const $chartEl = document.querySelector('.echart-bar-race-chart-example');
 
-    let data = Array.from(Array(7).keys()).map(() =>
+    let data = Array.from(Array(1).keys()).map(() =>
       Math.round(Math.random() * 200)
     );
 
@@ -2316,7 +2304,7 @@
         },
         yAxis: {
           type: 'category',
-          data: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
+          data: ['A'],
           inverse: true,
           axisLabel: {
             color: getColor('quaternary-color')
@@ -2397,9 +2385,9 @@
     const $chartEl = document.querySelector('.echart-bar-gradient-chart-example');
 
     const tooltipFormatter = params => {
-      return `<div> 
+      return `<div>
         <h6 class="fs-9 text-body-tertiary mb-0">
-        <span class="fas fa-circle me-1 text-primary"></span> ${params[0].name} : ${params[0].value} 
+        <span class="fas fa-circle me-1 text-primary"></span> ${params[0].name} : ${params[0].value}
          </h6>
       </div> `;
     };

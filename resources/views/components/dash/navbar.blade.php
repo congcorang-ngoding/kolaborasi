@@ -1,4 +1,4 @@
-<nav class="navbar navbar-top fixed-top navbar-expand" id="navbarDefault">
+<nav class="navbar navbar-top fixed-top navbar-expand d-print-none" id="navbarDefault">
     <div class="collapse navbar-collapse justify-content-between">
         <div class="navbar-logo">
 
@@ -283,7 +283,7 @@
 </nav>
 
 <div class="content">
-    <nav class="mb-3" aria-label="breadcrumb">
+    <nav class="mb-3 d-print-none" aria-label="breadcrumb">
         <ol class="breadcrumb mb-0">
             @if (Breadcrumbs::exists($slot))
                 {!! Breadcrumbs::render($slot) !!}

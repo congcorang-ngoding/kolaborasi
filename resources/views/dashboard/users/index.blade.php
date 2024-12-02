@@ -3,7 +3,21 @@
         {{ $title }}
     @endslot
 
-    <div class="mb-9">
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <canvas id="myChart2"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mb-9 d-print-none">
         <div id="projectSummary" data-list='{"valueNames":["id","email", "name", "whatsapp"],"page":6,"pagination":true}'>
             <div class="row justify-content-between mb-4 gx-6 gy-3 align-items-center">
                 <div class="col-auto">
@@ -37,6 +51,11 @@
                                         </button>
                                     </form>
                                 </li>
+                                <li>
+                                    <button class="dropdown-item" onclick="window.print()">
+                                        Export Diagram
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -63,11 +82,14 @@
                         <tr>
                             <th class="sort align-middle ps-3" scope="col" data-sort="id" style="width:6%;">ID
                             </th>
-                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="email">Email
+                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="email">
+                                Email
                             </th>
-                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="name">Name
+                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="name">
+                                Name
                             </th>
-                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="role">Role
+                            <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="role">
+                                Role
                             </th>
                             <th class="sort white-space-nowrap align-middle ps-0" scope="col" data-sort="whatsapp">
                                 Whatsapp
@@ -159,4 +181,66 @@
             </div>
         </div>
     </div>
+
+    @push('footer')
+        <script src="{{ asset('backend') }}/assets/js/echarts-example.js"></script>
+    @endpush
+
+    @push('chart')
+        <script>
+            const ctx = document.getElementById('myChart');
+            const ctx2 = document.getElementById('myChart2');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        @foreach ($roles as $role)
+                            '{{ $role }}',
+                        @endforeach
+                    ],
+                    datasets: [{
+                        label: 'Jumlah user',
+                        data: [
+                            '{{ $totalUser }}'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: [
+                        @foreach ($roles as $role)
+                            '{{ $role }}',
+                            'Admin'
+                        @endforeach
+                    ],
+                    datasets: [{
+                        label: 'Jumlah user',
+                        data: [
+                            '{{ $totalUser }}', '60'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    @endpush
 </x-dash.layout>

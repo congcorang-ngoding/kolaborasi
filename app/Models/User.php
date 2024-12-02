@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -58,5 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function activities()
     {
         return $this->hasMany(Activity::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

@@ -2,7 +2,6 @@
     @slot('title')
         Halaman Login
     @endslot
-
     <main class="main" id="top">
         <div class="row vh-100 g-0">
             <div class="col-lg-6 position-relative d-none d-lg-block">
@@ -27,19 +26,6 @@
                         <a href="{{ route('auth.google') }}" class="btn btn-phoenix-secondary w-100 mb-3"><span
                                 class="fab fa-google text-danger me-2 fs-9"></span>Sign in with google</a>
 
-                        @if ($errors->any())
-                            @foreach ($errors->all() as $row)
-                                <div class="alert alert-outline-danger d-flex align-items-center" role="alert">
-                                    <span class="fas fa-times-circle text-danger fs-5 me-3"></span>
-                                    <p class="mb-0 flex-1">
-                                        {{ $row }}
-                                    </p>
-
-                                    <button class="btn-close" type="button" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endforeach
-                        @endif
 
                         @if (session('error'))
                             <div class="alert alert-danger">

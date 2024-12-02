@@ -15,6 +15,27 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "amiralizadeh9480.laravel-extra-intellisense"
+      "bmewburn.vscode-intelephense-client"
+      "bradlc.vscode-tailwindcss"
+      "Codeium.codeium"
+      "codingyu.laravel-goto-view"
+      "eamodio.gitlens"
+      "EditorConfig.EditorConfig"
+      "esbenp.prettier-vscode"
+      "formulahendry.auto-close-tag"
+      "formulahendry.auto-rename-tag"
+      "IHunte.laravel-blade-wrapper"
+      "lakshits11.best-themes-redefined"
+      "MehediDracula.php-namespace-resolver"
+      "mikestead.dotenv"
+      "naoray.laravel-goto-components"
+      "onecentlin.laravel-blade"
+      "onecentlin.laravel5-snippets"
+      "ritwickdey.LiveServer"
+      "shufo.vscode-blade-formatter"
+      "trybick.terminal-zoom"
+      "vscode-icons-team.vscode-icons"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -31,8 +52,10 @@
       enable = true;
       previews = {
         web = {
-          command = ["npm" "run" "dev" "--port" "$PORT" "--host" "0.0.0.0"];
-          manager = "web";
+            command = [
+                "npm run dev --port $PORT --host 0.0.0.0"
+            ];
+            manager = "web";
         };
       };
     };

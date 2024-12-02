@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $description = 'Pengguna ' . $request->user()->name . ' masuk sistem dari IP Address: ' . $request->ip();
         $this->logActivity('login', $request->user(), null, $description);
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('dashboard', absolute: false))->with('success', 'Login berhasil');
     }
 
     /**

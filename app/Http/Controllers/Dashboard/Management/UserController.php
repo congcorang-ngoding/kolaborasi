@@ -36,8 +36,11 @@ class UserController extends Controller
     {
         $title = 'Users';
         $users = User::orderBy('id', 'DESC')->get();
+        $roles = Role::pluck('name', 'name')->all();
+        $totalUser = User::count();
 
-        return view('dashboard.users.index', compact('users', 'title'));
+
+        return view('dashboard.users.index', compact('users', 'title', 'roles', 'totalUser'));
     }
 
     /**
@@ -77,7 +80,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-            ->with('success', 'User created successfully');
+            ->with('success', trans('success.user-store'));
     }
 
     /**
@@ -153,7 +156,8 @@ class UserController extends Controller
 
     public function exportPdf()
     {
-        $pdf = Pdf::loadView('dashboard.pdf.testing');
+        $users = User::all();
+        $pdf = Pdf::loadView('dashboard.pdf.testing', compact('users'));
         return $pdf->download('testing.pdf');
     }
 
